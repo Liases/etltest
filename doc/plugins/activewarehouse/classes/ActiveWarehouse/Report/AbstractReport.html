@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: ActiveWarehouse::Report::AbstractReport</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">ActiveWarehouse::Report::AbstractReport</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report_rb.html">
+                vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Base module for reports.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000109">column_dimension_class</a>&nbsp;&nbsp;
+      <a href="#M000116">column_filters</a>&nbsp;&nbsp;
+      <a href="#M000110">column_hierarchy</a>&nbsp;&nbsp;
+      <a href="#M000111">column_param_prefix</a>&nbsp;&nbsp;
+      <a href="#M000107">cube</a>&nbsp;&nbsp;
+      <a href="#M000106">cube_name=</a>&nbsp;&nbsp;
+      <a href="#M000115">fact_attributes</a>&nbsp;&nbsp;
+      <a href="#M000108">fact_class</a>&nbsp;&nbsp;
+      <a href="#M000118">pass_params</a>&nbsp;&nbsp;
+      <a href="#M000112">row_dimension_class</a>&nbsp;&nbsp;
+      <a href="#M000117">row_filters</a>&nbsp;&nbsp;
+      <a href="#M000113">row_hierarchy</a>&nbsp;&nbsp;
+      <a href="#M000114">row_param_prefix</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">column_constraints</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">column_dimension_name</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">column_filters</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+A Hash of level names mapped to a method that is used to filter the
+available column values
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">column_hierarchy</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">column_param_prefix</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">column_stage</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">conditions</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+An optional conditions String
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">cube_name</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">fact_attributes</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">pass_params</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Array of parameters which will be passed
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">row_constraints</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">row_dimension_name</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">row_filters</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+A Hash of level names mapped to a method that is used to filter the
+available row values
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">row_hierarchy</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">row_param_prefix</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">row_stage</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">title</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000109" class="method-detail">
+        <a name="M000109"></a>
+
+        <div class="method-heading">
+          <a href="#M000109" class="method-signature">
+          <span class="method-name">column_dimension_class</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the column dimension class
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000109-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000109-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 65</span>
+65:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">column_dimension_class</span>
+66:         <span class="ruby-ivar">@column_dimension_class</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">fact_class</span>.<span class="ruby-identifier">dimension_class</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">column_dimension_name</span>)
+67:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000116" class="method-detail">
+        <a name="M000116"></a>
+
+        <div class="method-heading">
+          <a href="#M000116" class="method-signature">
+          <span class="method-name">column_filters</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000116-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000116-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 110</span>
+110:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">column_filters</span>
+111:         <span class="ruby-ivar">@column_filters</span> <span class="ruby-operator">||=</span> {}
+112:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000110" class="method-detail">
+        <a name="M000110"></a>
+
+        <div class="method-heading">
+          <a href="#M000110" class="method-signature">
+          <span class="method-name">column_hierarchy</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the column hierarchy. Uses the first hierarchy in the column dimension
+if not specified
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000110-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000110-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 71</span>
+71:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">column_hierarchy</span>
+72:         <span class="ruby-identifier">ch</span> = <span class="ruby-ivar">@column_hierarchy</span>
+73:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ch</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">ch</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'NULL'</span>
+74:           <span class="ruby-identifier">column_dimension_class</span>.<span class="ruby-identifier">hierarchies</span>.<span class="ruby-identifier">first</span>
+75:         <span class="ruby-keyword kw">else</span>
+76:           <span class="ruby-identifier">ch</span>
+77:         <span class="ruby-keyword kw">end</span>
+78:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000111" class="method-detail">
+        <a name="M000111"></a>
+
+        <div class="method-heading">
+          <a href="#M000111" class="method-signature">
+          <span class="method-name">column_param_prefix</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the column prefix. Returns &#8216;c&#8217; if not specified.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000111-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000111-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 81</span>
+81:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">column_param_prefix</span>
+82:         <span class="ruby-ivar">@column_param_prefix</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'c'</span>
+83:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000107" class="method-detail">
+        <a name="M000107"></a>
+
+        <div class="method-heading">
+          <a href="#M000107" class="method-signature">
+          <span class="method-name">cube</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the current <a href="AbstractReport.html#M000107">cube</a> instance
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000107-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000107-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 52</span>
+52:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cube</span>
+53:         <span class="ruby-ivar">@cube</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+54:           <span class="ruby-identifier">cube_class</span> = <span class="ruby-constant">ActiveWarehouse</span><span class="ruby-operator">::</span><span class="ruby-constant">Cube</span>.<span class="ruby-identifier">class_name</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cube_name</span>).<span class="ruby-identifier">constantize</span>
+55:           <span class="ruby-identifier">cube_class</span>.<span class="ruby-identifier">new</span>
+56:         <span class="ruby-keyword kw">end</span>
+57:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000106" class="method-detail">
+        <a name="M000106"></a>
+
+        <div class="method-heading">
+          <a href="#M000106" class="method-signature">
+          <span class="method-name">cube_name=</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Set the <a href="AbstractReport.html#M000107">cube</a> name
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000106-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000106-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 46</span>
+46:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cube_name=</span>(<span class="ruby-identifier">name</span>)
+47:         <span class="ruby-ivar">@cube_name</span> = <span class="ruby-identifier">name</span>
+48:         <span class="ruby-ivar">@cube</span> = <span class="ruby-keyword kw">nil</span>
+49:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000115" class="method-detail">
+        <a name="M000115"></a>
+
+        <div class="method-heading">
+          <a href="#M000115" class="method-signature">
+          <span class="method-name">fact_attributes</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the list of displayed fact attributes. If this value is not specified
+then all aggregate and calculated fields will be displayed
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000115-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000115-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 103</span>
+103:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fact_attributes</span>
+104:         <span class="ruby-ivar">@fact_attributes</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">returning</span> <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fa</span><span class="ruby-operator">|</span>
+105:           <span class="ruby-identifier">fact_class</span>.<span class="ruby-identifier">aggregate_fields</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span> <span class="ruby-identifier">fa</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">field</span> }
+106:           <span class="ruby-identifier">fact_class</span>.<span class="ruby-identifier">calculated_fields</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span> <span class="ruby-identifier">fa</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">field</span> }
+107:         <span class="ruby-keyword kw">end</span>
+108:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000108" class="method-detail">
+        <a name="M000108"></a>
+
+        <div class="method-heading">
+          <a href="#M000108" class="method-signature">
+          <span class="method-name">fact_class</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the fact class
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000108-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000108-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 60</span>
+60:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fact_class</span>
+61:         <span class="ruby-identifier">cube</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">fact_class</span>
+62:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000118" class="method-detail">
+        <a name="M000118"></a>
+
+        <div class="method-heading">
+          <a href="#M000118" class="method-signature">
+          <span class="method-name">pass_params</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000118-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000118-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 118</span>
+118:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pass_params</span>
+119:         <span class="ruby-ivar">@pass_params</span> <span class="ruby-operator">||=</span> []
+120:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000112" class="method-detail">
+        <a name="M000112"></a>
+
+        <div class="method-heading">
+          <a href="#M000112" class="method-signature">
+          <span class="method-name">row_dimension_class</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the row dimension class
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000112-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000112-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 86</span>
+86:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">row_dimension_class</span>
+87:         <span class="ruby-ivar">@row_dimension_class</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">fact_class</span>.<span class="ruby-identifier">dimension_class</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">row_dimension_name</span>)
+88:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000117" class="method-detail">
+        <a name="M000117"></a>
+
+        <div class="method-heading">
+          <a href="#M000117" class="method-signature">
+          <span class="method-name">row_filters</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000117-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000117-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 114</span>
+114:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">row_filters</span>
+115:         <span class="ruby-ivar">@row_filters</span> <span class="ruby-operator">||=</span> {}
+116:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000113" class="method-detail">
+        <a name="M000113"></a>
+
+        <div class="method-heading">
+          <a href="#M000113" class="method-signature">
+          <span class="method-name">row_hierarchy</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the row hierarchy. Uses the first hierarchy in the row dimension if not
+specified
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000113-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000113-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 92</span>
+92:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">row_hierarchy</span>
+93:         <span class="ruby-ivar">@row_hierarchy</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">row_dimension_class</span>.<span class="ruby-identifier">hierarchies</span>.<span class="ruby-identifier">first</span>
+94:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000114" class="method-detail">
+        <a name="M000114"></a>
+
+        <div class="method-heading">
+          <a href="#M000114" class="method-signature">
+          <span class="method-name">row_param_prefix</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the row parameter prefix. Returns &#8216;r&#8217; if not specified.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000114-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000114-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/report/abstract_report.rb, line 97</span>
+97:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">row_param_prefix</span>
+98:         <span class="ruby-ivar">@row_param_prefix</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'r'</span>
+99:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

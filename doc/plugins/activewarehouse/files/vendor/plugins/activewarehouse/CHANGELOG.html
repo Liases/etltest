@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: CHANGELOG</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>CHANGELOG</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>vendor/plugins/activewarehouse/CHANGELOG
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Fri Mar 06 11:46:57 +0100 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+0.1.0 - Dec 19, 2006
+</p>
+<ul>
+<li>Initial release
+
+</li>
+</ul>
+<p>
+0.2.0 - Feb 18, 2007
+</p>
+<ul>
+<li>Implemented basic hierarchical dimension functionality for variable depth
+hierarchies
+
+</li>
+<li>Implemented dimensional views for dimensional role-playing
+
+</li>
+<li>Implemented support for type 2 slowly changing dimensions (courtesy of Seth
+Ladd)
+
+</li>
+<li>Added generators for bridges and dimensional views to support the
+functionality above
+
+</li>
+<li>Added unit tests for generators
+
+</li>
+<li>Significant performance improvements in how aggregate data is loaded into
+the cube
+
+</li>
+</ul>
+<p>
+** Only get the calculated_fields and calculate_field_options once, outside
+of
+</p>
+<pre>
+   the aggregate loop.
+</pre>
+<p>
+** Condition added to the aggregate lookup query to only retrieve current
+stage
+</p>
+<ul>
+<li>Added :select to Dimension.available_values which makes it work on SQL
+Server (courtesy of Wenyi Zhou)
+
+</li>
+<li>Changed require_gem to gem and added alias to allow for older versions of
+rubygems
+
+</li>
+<li>Implemented initial random data generator with unit tests
+
+</li>
+<li>Added support for specifying a dimension-wide or level-by-level override of
+ordering. Useful for dates, for example when the month names should not be
+ordered by name but should be ordered by the calendar order for the months
+
+</li>
+</ul>
+<p>
+0.3.0 - May 13, 2007
+</p>
+<ul>
+<li>Updated docs.
+
+</li>
+<li>Fixed bug in report helper so that dimension ordering override now works as
+expected.
+
+</li>
+<li>Changed dimension migration generator template to remove all the extraneous
+code.
+
+</li>
+<li>Complete overhaul of the Cube class implementation.
+
+</li>
+<li>Cube query results now encapsulated in the CubeQueryResult class.
+
+</li>
+<li>Cube query method now takes two forms, either the old style form with 4
+required arguments and 5 optional arguments (with the last argument an
+options Hash) or the new style which takes a single Hash of options.
+
+</li>
+<li>Completely rewrote aggregation system. Cubes now delegate aggregation to
+Aggregation implementation classes.
+
+</li>
+<li>Developed NoAggregate aggregation strategy that goes directly to the fact
+and dimension tables.
+
+</li>
+<li>Refactored render_report helper.
+
+</li>
+<li>Refactored bridge class to allow for extension for specific bridge types
+(such as hierarchical bridges or weighted grouping bridges).
+
+</li>
+<li>Aggregate fields are now defined with classes. The base class is the Field
+class and it is implemented by AggregateField and CalculatedField.
+
+</li>
+<li>Added support for prejoining a fact with some or all of its dimensions
+
+</li>
+<li>Dimension to fact relationships are now defined with the dimension
+directive in the Fact class. This directive delegates to belongs_to.
+
+</li>
+<li>PosRetailSalesTransactionCube would now default to using
+PosRetailSalesTransactionFact and all of its dimensions as its report_on
+and pivots_on configuration by default. This means you only need to create
+a cube class and then can define report_on or pivots_on if you need to
+override these defaults.
+
+</li>
+<li>Updated dimension view support, used for dimension role-playing.
+
+</li>
+<li>DateDimension is now implemented as a class extending from Dimension.
+
+</li>
+<li>Test cases modified to reflect ETL changes as well as new functionality.
+
+</li>
+</ul>
+<p>
+0.4.0 -
+</p>
+<ul>
+<li>Applied patch from Giao Phan for date dimension builder.
+
+</li>
+<li>Updated for Rails 2.x, no longer compatible for Railsversions less than 2.x
+
+</li>
+</ul>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

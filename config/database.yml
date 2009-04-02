@@ -1,0 +1,22 @@
+defaults: &defaults
+  adapter: mysql
+  encoding: utf8
+  username: root
+  password: <password>
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  database: etlTest_development
+  <<: *defaults
+
+test:
+  database: etlTest_test
+  <<: *defaults
+
+production:
+  database: etlTest_production
+  <<: *defaults
+  
+etl_execution:
+  database: etl_execution
+  <<: *defaults

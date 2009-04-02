@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActiveWarehouse::CubeQueryResult</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActiveWarehouse::CubeQueryResult</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/vendor/plugins/activewarehouse/lib/active_warehouse/cube_query_result_rb.html">
+                vendor/plugins/activewarehouse/lib/active_warehouse/cube_query_result.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Class that holds the results of a <a href="Cube.html">Cube</a> query
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000256">add_data</a>&nbsp;&nbsp;
+      <a href="#M000253">each</a>&nbsp;&nbsp;
+      <a href="#M000252">has_row_values?</a>&nbsp;&nbsp;
+      <a href="#M000251">new</a>&nbsp;&nbsp;
+      <a href="#M000254">value</a>&nbsp;&nbsp;
+      <a href="#M000255">values</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">aggregate_fields_hash</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000251" class="method-detail">
+        <a name="M000251"></a>
+
+        <div class="method-heading">
+          <a href="#M000251" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(aggregate_fields)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Initialize the aggregate map with an array of <a
+href="AggregateField.html">AggregateField</a> instances. The
+AggregateFields are used to typecast the raw <a
+href="CubeQueryResult.html#M000255">values</a> coming from the database.
+Thank you very little, DBI.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000251-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000251-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube_query_result.rb, line 9</span>
+ 9:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">aggregate_fields</span>)
+10:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;aggregate_fields must not be empty&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">aggregate_fields</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">aggregate_fields</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+11:       <span class="ruby-ivar">@aggregate_fields_hash</span> = {}
+12:       <span class="ruby-identifier">aggregate_fields</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@aggregate_fields_hash</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">label</span>] = <span class="ruby-identifier">c</span>}
+13:       <span class="ruby-ivar">@values_map</span> = {}
+14:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000256" class="method-detail">
+        <a name="M000256"></a>
+
+        <div class="method-heading">
+          <a href="#M000256" class="method-signature">
+          <span class="method-name">add_data</span><span class="method-args">(row_value, col_value, aggregated_facts)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Add a hash of aggregated facts for the given row and column <a
+href="CubeQueryResult.html#M000255">values</a>. For instance, <a
+href="CubeQueryResult.html#M000256">add_data</a>(&#8216;Southeast&#8217;,
+2005, {:sales_sum =&gt; 40000, :sales_count =&gt; 40}) This method will
+typecast the <a href="CubeQueryResult.html#M000255">values</a> in
+aggregated_facts.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000256-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000256-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube_query_result.rb, line 46</span>
+46:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_data</span>(<span class="ruby-identifier">row_value</span>, <span class="ruby-identifier">col_value</span>, <span class="ruby-identifier">aggregated_facts</span>)
+47:       <span class="ruby-comment cmt">#puts &quot;Adding data for #{row_value}, #{col_value} [data=[#{aggregated_facts.join(',')}]]&quot;</span>
+48:       <span class="ruby-ivar">@values_map</span>[<span class="ruby-identifier">row_value</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-operator">||=</span> {}
+49:       <span class="ruby-ivar">@values_map</span>[<span class="ruby-identifier">row_value</span>.<span class="ruby-identifier">to_s</span>][<span class="ruby-identifier">col_value</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">typecast_facts</span>(<span class="ruby-identifier">aggregated_facts</span>)
+50:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000253" class="method-detail">
+        <a name="M000253"></a>
+
+        <div class="method-heading">
+          <a href="#M000253" class="method-signature">
+          <span class="method-name">each</span><span class="method-args">() {|key, value| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+iterate through every row and column combination
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000253-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000253-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube_query_result.rb, line 22</span>
+22:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
+23:       <span class="ruby-ivar">@values_map</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+24:         <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>
+25:       <span class="ruby-keyword kw">end</span>
+26:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000252" class="method-detail">
+        <a name="M000252"></a>
+
+        <div class="method-heading">
+          <a href="#M000252" class="method-signature">
+          <span class="method-name">has_row_values?</span><span class="method-args">(row_value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return true if the aggregate map includes the specified row <a
+href="CubeQueryResult.html#M000254">value</a>
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000252-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000252-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube_query_result.rb, line 17</span>
+17:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_row_values?</span>(<span class="ruby-identifier">row_value</span>)
+18:       <span class="ruby-ivar">@values_map</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">row_value</span>.<span class="ruby-identifier">to_s</span>)
+19:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000254" class="method-detail">
+        <a name="M000254"></a>
+
+        <div class="method-heading">
+          <a href="#M000254" class="method-signature">
+          <span class="method-name">value</span><span class="method-args">(row_value, col_value, field_label)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000254-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000254-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube_query_result.rb, line 28</span>
+28:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">value</span>(<span class="ruby-identifier">row_value</span>, <span class="ruby-identifier">col_value</span>, <span class="ruby-identifier">field_label</span>)
+29:       <span class="ruby-comment cmt">#puts &quot;getting value #{row_value},#{col_value},#{field_label}&quot;</span>
+30:       <span class="ruby-identifier">values</span>(<span class="ruby-identifier">row_value</span>, <span class="ruby-identifier">col_value</span>)[<span class="ruby-identifier">field_label</span>]
+31:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000255" class="method-detail">
+        <a name="M000255"></a>
+
+        <div class="method-heading">
+          <a href="#M000255" class="method-signature">
+          <span class="method-name">values</span><span class="method-args">(row_value, col_value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+returns a hash of type casted fact <a
+href="CubeQueryResult.html#M000255">values</a> for the intersection of
+row_value and col_value
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000255-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000255-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube_query_result.rb, line 35</span>
+35:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values</span>(<span class="ruby-identifier">row_value</span>, <span class="ruby-identifier">col_value</span>)
+36:       <span class="ruby-identifier">row</span> = <span class="ruby-ivar">@values_map</span>[<span class="ruby-identifier">row_value</span>.<span class="ruby-identifier">to_s</span>]
+37:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">empty_hash_for_missing_row_or_column</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">row</span>.<span class="ruby-identifier">nil?</span>
+38:       <span class="ruby-identifier">facts</span> = <span class="ruby-identifier">row</span>[<span class="ruby-identifier">col_value</span>.<span class="ruby-identifier">to_s</span>]
+39:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">empty_hash_for_missing_row_or_column</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">facts</span>.<span class="ruby-identifier">nil?</span>
+40:       <span class="ruby-identifier">facts</span>
+41:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

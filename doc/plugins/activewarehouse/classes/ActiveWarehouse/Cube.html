@@ -1,0 +1,1033 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActiveWarehouse::Cube</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActiveWarehouse::Cube</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/vendor/plugins/activewarehouse/lib/active_warehouse/cube_rb.html">
+                vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+A <a href="Cube.html">Cube</a> represents a collection of <a
+href="Cube.html#M000273">dimensions</a> operating on a fact. The <a
+href="Cube.html">Cube</a> provides a front-end for getting at the
+underlying data. Cubes support pluggable aggregation. The default
+aggregation is the NoAggregate which goes directly to the fact and <a
+href="Cube.html#M000273">dimensions</a> to answer queries.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000291">aggregate</a>&nbsp;&nbsp;
+      <a href="#M000292">aggregate_class</a>&nbsp;&nbsp;
+      <a href="#M000276">aggregate_fields</a>&nbsp;&nbsp;
+      <a href="#M000277">calculated_fields</a>&nbsp;&nbsp;
+      <a href="#M000281">class_name</a>&nbsp;&nbsp;
+      <a href="#M000289">connect_through</a>&nbsp;&nbsp;
+      <a href="#M000290">connection</a>&nbsp;&nbsp;
+      <a href="#M000295">connection</a>&nbsp;&nbsp;
+      <a href="#M000285">dimension_class</a>&nbsp;&nbsp;
+      <a href="#M000284">dimension_classes</a>&nbsp;&nbsp;
+      <a href="#M000273">dimensions</a>&nbsp;&nbsp;
+      <a href="#M000274">dimensions_hierarchies</a>&nbsp;&nbsp;
+      <a href="#M000283">fact_class</a>&nbsp;&nbsp;
+      <a href="#M000282">fact_class_name</a>&nbsp;&nbsp;
+      <a href="#M000279">field_names</a>&nbsp;&nbsp;
+      <a href="#M000278">fields</a>&nbsp;&nbsp;
+      <a href="#M000280">fields_for_select</a>&nbsp;&nbsp;
+      <a href="#M000267">inherited</a>&nbsp;&nbsp;
+      <a href="#M000287">last_modified</a>&nbsp;&nbsp;
+      <a href="#M000286">logger</a>&nbsp;&nbsp;
+      <a href="#M000275">pivot_on_hierarchical_dimension?</a>&nbsp;&nbsp;
+      <a href="#M000269">pivots_on</a>&nbsp;&nbsp;
+      <a href="#M000272">populate</a>&nbsp;&nbsp;
+      <a href="#M000293">query</a>&nbsp;&nbsp;
+      <a href="#M000294">query_row_and_column</a>&nbsp;&nbsp;
+      <a href="#M000271">rebuild</a>&nbsp;&nbsp;
+      <a href="#M000270">reports_on</a>&nbsp;&nbsp;
+      <a href="#M000268">subclasses</a>&nbsp;&nbsp;
+      <a href="#M000288">temp_dir</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">pivots_on</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">pivot_on</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">reports_on</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">report_on</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">connect_through</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Specify the ActiveRecord class to connect through Note: this is a potential
+directive in a <a href="Cube.html">Cube</a> subclass
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">temp_dir</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+The temp directory for storing files during warehouse rebuilds
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000291" class="method-detail">
+        <a name="M000291"></a>
+
+        <div class="method-heading">
+          <a href="#M000291" class="method-signature">
+          <span class="method-name">aggregate</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Defaults to NoAggregate strategy.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000291-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000291-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 187</span>
+187:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">aggregate</span>
+188:         <span class="ruby-ivar">@aggregate</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">ActiveWarehouse</span><span class="ruby-operator">::</span><span class="ruby-constant">Aggregate</span><span class="ruby-operator">::</span><span class="ruby-constant">NoAggregate</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+189:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000292" class="method-detail">
+        <a name="M000292"></a>
+
+        <div class="method-heading">
+          <a href="#M000292" class="method-signature">
+          <span class="method-name">aggregate_class</span><span class="method-args">(agg_class)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000292-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000292-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 191</span>
+191:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">aggregate_class</span>(<span class="ruby-identifier">agg_class</span>)
+192:         <span class="ruby-ivar">@aggregate</span> = <span class="ruby-identifier">agg_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+193:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000276" class="method-detail">
+        <a name="M000276"></a>
+
+        <div class="method-heading">
+          <a href="#M000276" class="method-signature">
+          <span class="method-name">aggregate_fields</span><span class="method-args">(dims=[])</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+returns the <a href="Cube.html#M000291">aggregate</a> <a
+href="Cube.html#M000278">fields</a> for this cube removing the <a
+href="Cube.html#M000291">aggregate</a> <a
+href="Cube.html#M000278">fields</a> that are defined in fact class that are
+related to hierarchical dimension, but the cube doesn&#8216;t pivot on any
+hierarchical <a href="Cube.html#M000273">dimensions</a> The method also
+further removes the not appropreate <a
+href="Cube.html#M000291">aggregate</a> <a
+href="Cube.html#M000278">fields</a> for the type of <a
+href="Cube.html#M000273">dimensions</a> passed in if they exists.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000276-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000276-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 96</span>
+ 96:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">aggregate_fields</span>(<span class="ruby-identifier">dims</span>=[])
+ 97:         <span class="ruby-identifier">agg_fields</span> = <span class="ruby-identifier">fact_class</span>.<span class="ruby-identifier">aggregate_fields</span>.<span class="ruby-identifier">reject</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-identifier">pivot_on_hierarchical_dimension?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">field</span>.<span class="ruby-identifier">levels_from_parent</span>.<span class="ruby-identifier">empty?</span> } 
+ 98:         <span class="ruby-identifier">dims</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dim</span><span class="ruby-operator">|</span>
+ 99:           <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">dim</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">fact_class</span>.<span class="ruby-identifier">has_and_belongs_to_many_relationship?</span>(<span class="ruby-identifier">dim</span>.<span class="ruby-identifier">to_sym</span>)
+100:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">agg_fields</span>.<span class="ruby-identifier">reject</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-identifier">field</span>.<span class="ruby-identifier">is_count_distinct?</span>}
+101:           <span class="ruby-keyword kw">end</span>
+102:         <span class="ruby-keyword kw">end</span>
+103:         <span class="ruby-identifier">agg_fields</span>
+104:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000277" class="method-detail">
+        <a name="M000277"></a>
+
+        <div class="method-heading">
+          <a href="#M000277" class="method-signature">
+          <span class="method-name">calculated_fields</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000277-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000277-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 106</span>
+106:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">calculated_fields</span>
+107:         <span class="ruby-identifier">fact_class</span>.<span class="ruby-identifier">calculated_fields</span>
+108:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000281" class="method-detail">
+        <a name="M000281"></a>
+
+        <div class="method-heading">
+          <a href="#M000281" class="method-signature">
+          <span class="method-name">class_name</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the class name for the specified cube name Example: Regional Sales will
+become RegionalSalesCube
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000281-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000281-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 124</span>
+124:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">class_name</span>(<span class="ruby-identifier">name</span>)
+125:         <span class="ruby-identifier">cube_name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+126:         <span class="ruby-identifier">cube_name</span> = <span class="ruby-node">&quot;#{cube_name}_cube&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">cube_name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/_cube$/</span>
+127:         <span class="ruby-identifier">cube_name</span>.<span class="ruby-identifier">classify</span>
+128:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000289" class="method-detail">
+        <a name="M000289"></a>
+
+        <div class="method-heading">
+          <a href="#M000289" class="method-signature">
+          <span class="method-name">connect_through</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000289-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000289-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 177</span>
+177:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connect_through</span>
+178:         <span class="ruby-ivar">@connect_through</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+179:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000290" class="method-detail">
+        <a name="M000290"></a>
+
+        <div class="method-heading">
+          <a href="#M000290" class="method-signature">
+          <span class="method-name">connection</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get an adapter <a href="Cube.html#M000290">connection</a>
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000290-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000290-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 182</span>
+182:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connection</span>
+183:         <span class="ruby-identifier">connect_through</span>.<span class="ruby-identifier">connection</span>
+184:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000285" class="method-detail">
+        <a name="M000285"></a>
+
+        <div class="method-heading">
+          <a href="#M000285" class="method-signature">
+          <span class="method-name">dimension_class</span><span class="method-args">(dimension_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the dimension class for the specified dimension name
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000285-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000285-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 148</span>
+148:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dimension_class</span>(<span class="ruby-identifier">dimension_name</span>)
+149:         <span class="ruby-identifier">fact_class</span>.<span class="ruby-identifier">dimension_relationships</span>[<span class="ruby-identifier">dimension_name</span>.<span class="ruby-identifier">to_sym</span>].<span class="ruby-identifier">class_name</span>.<span class="ruby-identifier">constantize</span>      
+150:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000284" class="method-detail">
+        <a name="M000284"></a>
+
+        <div class="method-heading">
+          <a href="#M000284" class="method-signature">
+          <span class="method-name">dimension_classes</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get a list of dimension class instances
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000284-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000284-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 141</span>
+141:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dimension_classes</span>
+142:         <span class="ruby-identifier">dimensions</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dimension_name</span><span class="ruby-operator">|</span>
+143:           <span class="ruby-identifier">dimension_class</span>(<span class="ruby-identifier">dimension_name</span>)
+144:         <span class="ruby-keyword kw">end</span>
+145:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000273" class="method-detail">
+        <a name="M000273"></a>
+
+        <div class="method-heading">
+          <a href="#M000273" class="method-signature">
+          <span class="method-name">dimensions</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the <a href="Cube.html#M000273">dimensions</a> that this cube pivots on
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000273-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000273-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 66</span>
+66:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dimensions</span>
+67:         <span class="ruby-ivar">@dimensions</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">fact_class</span>.<span class="ruby-identifier">dimension_relationships</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">k</span>}
+68:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000274" class="method-detail">
+        <a name="M000274"></a>
+
+        <div class="method-heading">
+          <a href="#M000274" class="method-signature">
+          <span class="method-name">dimensions_hierarchies</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get an <a href="OrderedHash.html">OrderedHash</a> of each dimension mapped
+to its hierarchies which will be included in the cube
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000274-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000274-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 72</span>
+72:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dimensions_hierarchies</span>
+73:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@dimensions_hierarchies</span>.<span class="ruby-identifier">nil?</span>
+74:           <span class="ruby-ivar">@dimensions_hierarchies</span> = <span class="ruby-constant">OrderedHash</span>.<span class="ruby-identifier">new</span>
+75:           <span class="ruby-identifier">dimensions</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dimension</span><span class="ruby-operator">|</span>
+76:             <span class="ruby-ivar">@dimensions_hierarchies</span>[<span class="ruby-identifier">dimension</span>] = <span class="ruby-identifier">fact_class</span>.<span class="ruby-identifier">dimension_class</span>(<span class="ruby-identifier">dimension</span>).<span class="ruby-identifier">hierarchies</span>
+77:           <span class="ruby-keyword kw">end</span>
+78:         <span class="ruby-keyword kw">end</span>
+79:         <span class="ruby-ivar">@dimensions_hierarchies</span>
+80:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000283" class="method-detail">
+        <a name="M000283"></a>
+
+        <div class="method-heading">
+          <a href="#M000283" class="method-signature">
+          <span class="method-name">fact_class</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the aggregated fact class instance
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000283-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000283-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 136</span>
+136:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fact_class</span>
+137:         <span class="ruby-identifier">fact_class_name</span>.<span class="ruby-identifier">constantize</span>
+138:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000282" class="method-detail">
+        <a name="M000282"></a>
+
+        <div class="method-heading">
+          <a href="#M000282" class="method-signature">
+          <span class="method-name">fact_class_name</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the aggregated fact class name
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000282-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000282-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 131</span>
+131:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fact_class_name</span>
+132:         <span class="ruby-constant">ActiveWarehouse</span><span class="ruby-operator">::</span><span class="ruby-constant">Fact</span>.<span class="ruby-identifier">class_name</span>(<span class="ruby-ivar">@fact_name</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">/Cube$/</span>,<span class="ruby-value str">''</span>).<span class="ruby-identifier">underscore</span>.<span class="ruby-identifier">to_sym</span>)
+133:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000279" class="method-detail">
+        <a name="M000279"></a>
+
+        <div class="method-heading">
+          <a href="#M000279" class="method-signature">
+          <span class="method-name">field_names</span><span class="method-args">(dims=[])</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000279-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000279-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 114</span>
+114:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">field_names</span>(<span class="ruby-identifier">dims</span>=[])
+115:         <span class="ruby-identifier">fields</span>(<span class="ruby-identifier">dims</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span> <span class="ruby-identifier">field</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span> }
+116:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000278" class="method-detail">
+        <a name="M000278"></a>
+
+        <div class="method-heading">
+          <a href="#M000278" class="method-signature">
+          <span class="method-name">fields</span><span class="method-args">(dims=[])</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000278-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000278-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 110</span>
+110:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fields</span>(<span class="ruby-identifier">dims</span>=[])
+111:         <span class="ruby-identifier">aggregate_fields</span>(<span class="ruby-identifier">dims</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">calculated_fields</span>
+112:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000280" class="method-detail">
+        <a name="M000280"></a>
+
+        <div class="method-heading">
+          <a href="#M000280" class="method-signature">
+          <span class="method-name">fields_for_select</span><span class="method-args">(dims=[])</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000280-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000280-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 118</span>
+118:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fields_for_select</span>(<span class="ruby-identifier">dims</span>=[])
+119:         <span class="ruby-identifier">fields</span>(<span class="ruby-identifier">dims</span>).<span class="ruby-identifier">inject</span>({}) { <span class="ruby-operator">|</span><span class="ruby-identifier">select_hash</span>, <span class="ruby-identifier">field</span><span class="ruby-operator">|</span> <span class="ruby-identifier">select_hash</span>.<span class="ruby-identifier">update</span> <span class="ruby-identifier">field</span>.<span class="ruby-identifier">label</span>.<span class="ruby-identifier">to_s</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">field</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span> }
+120:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000267" class="method-detail">
+        <a name="M000267"></a>
+
+        <div class="method-heading">
+          <a href="#M000267" class="method-signature">
+          <span class="method-name">inherited</span><span class="method-args">(subclass)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Callback which is invoked when <a href="Cube.html#M000268">subclasses</a>
+are created
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000267-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000267-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 11</span>
+11:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inherited</span>(<span class="ruby-identifier">subclass</span>)
+12:         <span class="ruby-identifier">subclasses</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">subclass</span>
+13:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000287" class="method-detail">
+        <a name="M000287"></a>
+
+        <div class="method-heading">
+          <a href="#M000287" class="method-signature">
+          <span class="method-name">last_modified</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the time when the fact or any dimension referenced in this cube was
+last modified
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000287-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000287-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 159</span>
+159:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last_modified</span>
+160:         <span class="ruby-identifier">lm</span> = <span class="ruby-identifier">fact_class</span>.<span class="ruby-identifier">last_modified</span>
+161:         <span class="ruby-identifier">dimensions</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dimension</span><span class="ruby-operator">|</span>
+162:           <span class="ruby-identifier">dim</span> = <span class="ruby-constant">ActiveWarehouse</span><span class="ruby-operator">::</span><span class="ruby-constant">Dimension</span>.<span class="ruby-identifier">class_for_name</span>(<span class="ruby-identifier">dimension</span>)
+163:           <span class="ruby-identifier">lm</span> = <span class="ruby-identifier">dim</span>.<span class="ruby-identifier">last_modified</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dim</span>.<span class="ruby-identifier">last_modified</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">lm</span>
+164:         <span class="ruby-keyword kw">end</span>
+165:         <span class="ruby-identifier">lm</span>
+166:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000286" class="method-detail">
+        <a name="M000286"></a>
+
+        <div class="method-heading">
+          <a href="#M000286" class="method-signature">
+          <span class="method-name">logger</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the cube <a href="Cube.html#M000286">logger</a>
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000286-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000286-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 153</span>
+153:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logger</span>
+154:         <span class="ruby-ivar">@logger</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'cube.log'</span>)
+155:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000275" class="method-detail">
+        <a name="M000275"></a>
+
+        <div class="method-heading">
+          <a href="#M000275" class="method-signature">
+          <span class="method-name">pivot_on_hierarchical_dimension?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+returns true if this cube pivots on a hierarchical dimension.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000275-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000275-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 83</span>
+83:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pivot_on_hierarchical_dimension?</span>
+84:         <span class="ruby-identifier">dimension_classes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dimension</span><span class="ruby-operator">|</span>
+85:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dimension</span>.<span class="ruby-identifier">hierarchical_dimension?</span>
+86:         <span class="ruby-keyword kw">end</span>
+87:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+88:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000269" class="method-detail">
+        <a name="M000269"></a>
+
+        <div class="method-heading">
+          <a href="#M000269" class="method-signature">
+          <span class="method-name">pivots_on</span><span class="method-args">(*dimension_list)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Defines the <a href="Cube.html#M000273">dimensions</a> that this cube
+pivots on. If the fact name and cube name are different (for example, if a
+PurchaseCube does not report on a PurchaseFact) then you <b>must</b>
+declare the <tt><a href="Cube.html#M000270">reports_on</a></tt> first.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000269-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000269-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 24</span>
+24:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pivots_on</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">dimension_list</span>)
+25:         <span class="ruby-ivar">@dimensions_hierarchies</span> = <span class="ruby-constant">OrderedHash</span>.<span class="ruby-identifier">new</span>
+26:         <span class="ruby-ivar">@dimensions</span> = []
+27:         <span class="ruby-identifier">dimension_list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dimension</span><span class="ruby-operator">|</span>
+28:           <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">dimension</span>
+29:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Symbol</span>, <span class="ruby-constant">String</span>
+30:             <span class="ruby-identifier">dimensions</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">dimension</span>.<span class="ruby-identifier">to_sym</span>
+31:             <span class="ruby-identifier">dimensions_hierarchies</span>[<span class="ruby-identifier">dimension</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">fact_class</span>.<span class="ruby-identifier">dimension_class</span>(<span class="ruby-identifier">dimension</span>).<span class="ruby-identifier">hierarchies</span>
+32:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Hash</span>
+33:             <span class="ruby-identifier">dimension_name</span> = <span class="ruby-identifier">dimension</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">to_sym</span>
+34:             <span class="ruby-identifier">dimensions</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">dimension_name</span>
+35:             <span class="ruby-identifier">dimensions_hierarchies</span>[<span class="ruby-identifier">dimension_name</span>] = [<span class="ruby-identifier">dimension</span>[<span class="ruby-identifier">dimension_name</span>]].<span class="ruby-identifier">flatten</span>
+36:           <span class="ruby-keyword kw">else</span>
+37:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;Each argument to pivot_on must be a symbol, string or Hash&quot;</span>
+38:           <span class="ruby-keyword kw">end</span>
+39:         <span class="ruby-keyword kw">end</span>
+40:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000272" class="method-detail">
+        <a name="M000272"></a>
+
+        <div class="method-heading">
+          <a href="#M000272" class="method-signature">
+          <span class="method-name">populate</span><span class="method-args">(options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Populate the data warehouse. Delegate to aggregate.populate
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000272-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000272-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 61</span>
+61:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">populate</span>(<span class="ruby-identifier">options</span>={})
+62:         <span class="ruby-identifier">aggregate</span>.<span class="ruby-identifier">populate</span>
+63:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000271" class="method-detail">
+        <a name="M000271"></a>
+
+        <div class="method-heading">
+          <a href="#M000271" class="method-signature">
+          <span class="method-name">rebuild</span><span class="method-args">(options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Rebuild the data warehouse.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000271-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000271-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 56</span>
+56:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rebuild</span>(<span class="ruby-identifier">options</span>={})
+57:         <span class="ruby-identifier">populate</span>(<span class="ruby-identifier">options</span>)
+58:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000270" class="method-detail">
+        <a name="M000270"></a>
+
+        <div class="method-heading">
+          <a href="#M000270" class="method-signature">
+          <span class="method-name">reports_on</span><span class="method-args">(fact_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Defines the fact name, without the &#8216;<a
+href="Fact.html">Fact</a>&#8217; suffix, that this cube reports on. For
+instance, if you have PurchaseFact, you could then call <tt><a
+href="Cube.html#M000270">reports_on</a> :purchase</tt>.
+</p>
+<p>
+The default value for <a href="Cube.html#M000270">reports_on</a> is to take
+the name of the cube, i.e. PurchaseCube, and remove the <a
+href="Cube.html">Cube</a> suffix. The assumption is that your <a
+href="Cube.html">Cube</a> name matches your <a href="Fact.html">Fact</a>
+name.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000270-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000270-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 50</span>
+50:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reports_on</span>(<span class="ruby-identifier">fact_name</span>)
+51:         <span class="ruby-ivar">@fact_name</span> = <span class="ruby-identifier">fact_name</span>
+52:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000268" class="method-detail">
+        <a name="M000268"></a>
+
+        <div class="method-heading">
+          <a href="#M000268" class="method-signature">
+          <span class="method-name">subclasses</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get a list of all known <a href="Cube.html#M000268">subclasses</a>
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000268-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000268-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 16</span>
+16:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">subclasses</span>
+17:         <span class="ruby-ivar">@subclasses</span> <span class="ruby-operator">||=</span> []
+18:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000288" class="method-detail">
+        <a name="M000288"></a>
+
+        <div class="method-heading">
+          <a href="#M000288" class="method-signature">
+          <span class="method-name">temp_dir</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000288-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000288-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 170</span>
+170:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">temp_dir</span>
+171:         <span class="ruby-ivar">@temp_dir</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'/tmp'</span>
+172:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000295" class="method-detail">
+        <a name="M000295"></a>
+
+        <div class="method-heading">
+          <a href="#M000295" class="method-signature">
+          <span class="method-name">connection</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the database <a href="Cube.html#M000290">connection</a> (delegates to
+<a href="Cube.html#M000290">Cube.connection</a> class method)
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000295-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000295-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 229</span>
+229:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connection</span>
+230:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">connection</span>
+231:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000293" class="method-detail">
+        <a name="M000293"></a>
+
+        <div class="method-heading">
+          <a href="#M000293" class="method-signature">
+          <span class="method-name">query</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Query the cube. The column dimension, column hierarchy, row dimension and
+row hierarchy are all required.
+</p>
+<p>
+The conditions value is a String that represents a SQL condition appended
+to the where clause. TODO: this may eventually be converted to another <a
+href="Cube.html#M000293">query</a> language.
+</p>
+<p>
+The cstage value represents the current column drill down stage and
+defaults to 0.
+</p>
+<p>
+The rstage value represents the current row drill down stage and defaults
+to 0. Filters contains key/value pairs where the key is a string of
+&#8216;dimension.column&#8217; and the value is the value to filter by. For
+example:
+</p>
+<p>
+filters = {&#8216;date.calendar_year&#8217; =&gt; 2007,
+&#8216;product.category&#8217; =&gt; &#8216;Food&#8217;} <a
+href="Cube.html#M000293">query</a>(:date, :cy, :store, :region, 1, 0,
+filters)
+</p>
+<p>
+Note that product.category refers to a dimension which is not actually
+visible but which is both part of the cube and is used for filtering.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000293-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000293-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 217</span>
+217:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">query</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+218:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">aggregate</span>.<span class="ruby-identifier">query</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+219:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000294" class="method-detail">
+        <a name="M000294"></a>
+
+        <div class="method-heading">
+          <a href="#M000294" class="method-signature">
+          <span class="method-name">query_row_and_column</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Similar to <a href="Cube.html#M000293">query</a>, but expects slightly
+different arguments. See
+ActiveWarehouse::Aggregate::Aggregate.query_row_and_column for details.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000294-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000294-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/cube.rb, line 224</span>
+224:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">query_row_and_column</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+225:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">aggregate</span>.<span class="ruby-identifier">query_row_and_column</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+226:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

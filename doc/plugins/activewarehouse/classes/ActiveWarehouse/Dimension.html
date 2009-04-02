@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActiveWarehouse::Dimension</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActiveWarehouse::Dimension</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/vendor/plugins/activewarehouse/lib/active_warehouse/dimension_rb.html">
+                vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                ActiveRecord::Base
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="Dimension.html">Dimension</a> tables contain the textual
+descriptors of the business. Dimensions provide the filters which are
+applied to facts. Dimensions are the primary source of query constraints,
+groupings and report labels.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000218">available_child_values</a>&nbsp;&nbsp;
+      <a href="#M000217">available_values</a>&nbsp;&nbsp;
+      <a href="#M000219">available_values_tree</a>&nbsp;&nbsp;
+      <a href="#M000212">class_for_name</a>&nbsp;&nbsp;
+      <a href="#M000211">class_name</a>&nbsp;&nbsp;
+      <a href="#M000205">define_hierarchy</a>&nbsp;&nbsp;
+      <a href="#M000215">denominator_count</a>&nbsp;&nbsp;
+      <a href="#M000221">expire_value_tree_cache</a>&nbsp;&nbsp;
+      <a href="#M000222">expire_value_tree_cache</a>&nbsp;&nbsp;
+      <a href="#M000216">foreign_key</a>&nbsp;&nbsp;
+      <a href="#M000207">hierarchies</a>&nbsp;&nbsp;
+      <a href="#M000206">hierarchy</a>&nbsp;&nbsp;
+      <a href="#M000208">hierarchy_levels</a>&nbsp;&nbsp;
+      <a href="#M000213">last_modified</a>&nbsp;&nbsp;
+      <a href="#M000204">level_orders</a>&nbsp;&nbsp;
+      <a href="#M000203">set_level_order</a>&nbsp;&nbsp;
+      <a href="#M000202">set_order</a>&nbsp;&nbsp;
+      <a href="#M000209">sym</a>&nbsp;&nbsp;
+      <a href="#M000210">table_name</a>&nbsp;&nbsp;
+      <a href="#M000214">to_dimension</a>&nbsp;&nbsp;
+      <a href="#M000220">value_tree_cache</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="HierarchicalDimension.html">ActiveWarehouse::HierarchicalDimension</a></span>
+        <span class="include-name"><a href="SlowlyChangingDimension.html">ActiveWarehouse::SlowlyChangingDimension</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">available_child_values</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">available_children_values</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">level_orders</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+Map of level names to alternate order columns
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">order</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Alternate order by, to be used rather than the current level being queried
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000218" class="method-detail">
+        <a name="M000218"></a>
+
+        <div class="method-heading">
+          <a href="#M000218" class="method-signature">
+          <span class="method-name">available_child_values</span><span class="method-args">(hierarchy_name, parent_values)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get an array of child values for a particular parent in the hierachy For
+example, given a <a href="DateDimension.html">DateDimension</a> with data
+from 2002 to 2004:
+</p>
+<p>
+<a href="Dimension.html#M000218">available_child_values</a>(:cy, [2002,
+&#8216;Q1&#8217;]) returns [&#8216;January&#8217;, &#8216;Feburary&#8217;,
+&#8216;March&#8217;, &#8216;April&#8217;]
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000218-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000218-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 213</span>
+213:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">available_child_values</span>(<span class="ruby-identifier">hierarchy_name</span>, <span class="ruby-identifier">parent_values</span>)
+214:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hierarchy_levels</span>[<span class="ruby-identifier">hierarchy_name</span>].<span class="ruby-identifier">nil?</span>
+215:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;The hierarchy '#{hierarchy_name}' does not exist in your dimension #{name}&quot;</span>
+216:         <span class="ruby-keyword kw">end</span>
+217: 
+218:         <span class="ruby-identifier">levels</span> = <span class="ruby-identifier">hierarchy_levels</span>[<span class="ruby-identifier">hierarchy_name</span>]
+219:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">levels</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">parent_values</span>.<span class="ruby-identifier">length</span>
+220:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;The parent_values '#{parent_values.to_yaml}' exceeds the hierarchy depth #{levels.to_yaml}&quot;</span>
+221:         <span class="ruby-keyword kw">end</span>
+222:         
+223:         <span class="ruby-identifier">child_level</span> = <span class="ruby-identifier">levels</span>[<span class="ruby-identifier">parent_values</span>.<span class="ruby-identifier">length</span>].<span class="ruby-identifier">to_s</span>
+224:         
+225:         <span class="ruby-comment cmt"># Create the conditions array. Will work with 1.1.6.</span>
+226:         <span class="ruby-identifier">conditions_parts</span> = []
+227:         <span class="ruby-identifier">conditions_values</span> = []
+228:         <span class="ruby-identifier">parent_values</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+229:           <span class="ruby-identifier">conditions_parts</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{levels[index]} = ?&quot;</span>
+230:           <span class="ruby-identifier">conditions_values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">value</span>
+231:         <span class="ruby-keyword kw">end</span>
+232:         <span class="ruby-identifier">conditions</span> = [<span class="ruby-identifier">conditions_parts</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">' AND '</span>)] <span class="ruby-operator">+</span> <span class="ruby-identifier">conditions_values</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">conditions_parts</span>.<span class="ruby-identifier">empty?</span>
+233:         
+234:         <span class="ruby-identifier">child_level_method</span> = <span class="ruby-identifier">child_level</span>.<span class="ruby-identifier">to_sym</span>
+235:         <span class="ruby-identifier">child_level</span> = <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">quote_column_name</span>(<span class="ruby-identifier">child_level</span>)
+236:         <span class="ruby-identifier">order</span> = <span class="ruby-identifier">level_orders</span>[<span class="ruby-identifier">child_level</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">order</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">child_level</span>
+237:         
+238:         <span class="ruby-identifier">select_sql</span> = <span class="ruby-node">&quot;distinct #{child_level}&quot;</span>
+239:         <span class="ruby-identifier">select_sql</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;, #{order}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">order</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">child_level</span>
+240:         <span class="ruby-identifier">options</span> = {<span class="ruby-identifier">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">select_sql</span>, <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order</span>}
+241: 
+242:         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:conditions</span>] = <span class="ruby-identifier">conditions</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">conditions</span>.<span class="ruby-identifier">nil?</span>
+243: 
+244:         <span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>, <span class="ruby-identifier">options</span>).<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dim</span><span class="ruby-operator">|</span>
+245:           <span class="ruby-identifier">dim</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">child_level_method</span>)
+246:         <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">uniq</span>
+247:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000217" class="method-detail">
+        <a name="M000217"></a>
+
+        <div class="method-heading">
+          <a href="#M000217" class="method-signature">
+          <span class="method-name">available_values</span><span class="method-args">(level)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get an array of the available values for a particular <a
+href="Dimension.html#M000206">hierarchy</a> level For example, given a <a
+href="DateDimension.html">DateDimension</a> with data from 2002 to 2004:
+</p>
+<pre>
+ available_values('calendar_year') returns ['2002','2003','2004']
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000217-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000217-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 194</span>
+194:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">available_values</span>(<span class="ruby-identifier">level</span>)
+195:         <span class="ruby-identifier">level_method</span> = <span class="ruby-identifier">level</span>.<span class="ruby-identifier">to_sym</span>
+196:         <span class="ruby-identifier">level</span> = <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">quote_column_name</span>(<span class="ruby-identifier">level</span>.<span class="ruby-identifier">to_s</span>)
+197:         <span class="ruby-identifier">order</span> = <span class="ruby-identifier">level_orders</span>[<span class="ruby-identifier">level</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">order</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">level</span>
+198:         
+199:         <span class="ruby-identifier">options</span> = {<span class="ruby-identifier">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;distinct #{order.to_s == level.to_s ? '' : order.to_s+','} #{level}&quot;</span>, <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order</span>}
+200:         <span class="ruby-identifier">values</span> = []
+201:         <span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>, <span class="ruby-identifier">options</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dim</span><span class="ruby-operator">|</span>
+202:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">dim</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">level_method</span>)
+203:           <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">dim</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">level_method</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">value</span>)
+204:         <span class="ruby-keyword kw">end</span>
+205:         <span class="ruby-identifier">values</span>.<span class="ruby-identifier">to_a</span>
+206:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000219" class="method-detail">
+        <a name="M000219"></a>
+
+        <div class="method-heading">
+          <a href="#M000219" class="method-signature">
+          <span class="method-name">available_values_tree</span><span class="method-args">(hierarchy_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get a tree of Node objects for all of the values in the specified <a
+href="Dimension.html#M000206">hierarchy</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000219-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000219-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 251</span>
+251:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">available_values_tree</span>(<span class="ruby-identifier">hierarchy_name</span>)
+252:         <span class="ruby-identifier">root</span> = <span class="ruby-identifier">value_tree_cache</span>[<span class="ruby-identifier">hierarchy_name</span>]
+253:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">root</span>.<span class="ruby-identifier">nil?</span>
+254:           <span class="ruby-identifier">root</span> = <span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'All'</span>, <span class="ruby-value str">'__ROOT__'</span>)
+255:           <span class="ruby-identifier">levels</span> = <span class="ruby-identifier">hierarchy</span>(<span class="ruby-identifier">hierarchy_name</span>)
+256:           <span class="ruby-identifier">nodes</span> = {<span class="ruby-keyword kw">nil</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">root</span>}
+257:           <span class="ruby-identifier">level_list</span> = <span class="ruby-identifier">levels</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">level</span><span class="ruby-operator">|</span> <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">quote_column_name</span>(<span class="ruby-identifier">level</span>) }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>)
+258:           <span class="ruby-identifier">order</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">order</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">level_list</span>
+259:           <span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>, <span class="ruby-identifier">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">level_list</span>, <span class="ruby-identifier">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">level_list</span>, <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dim</span><span class="ruby-operator">|</span>
+260:             <span class="ruby-identifier">parent_node</span> = <span class="ruby-identifier">root</span>
+261:             <span class="ruby-identifier">levels</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">level</span><span class="ruby-operator">|</span>
+262:               <span class="ruby-identifier">node_value</span> = <span class="ruby-identifier">dim</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">level</span>)
+263:               <span class="ruby-identifier">child_node</span> = <span class="ruby-identifier">parent_node</span>.<span class="ruby-identifier">optionally_add_child</span>(<span class="ruby-identifier">node_value</span>, <span class="ruby-identifier">level</span>)
+264:               <span class="ruby-identifier">parent_node</span> = <span class="ruby-identifier">child_node</span>
+265:             <span class="ruby-keyword kw">end</span>
+266:           <span class="ruby-keyword kw">end</span>
+267:           <span class="ruby-identifier">value_tree_cache</span>[<span class="ruby-identifier">hierarchy_name</span>] = <span class="ruby-identifier">root</span>
+268:         <span class="ruby-keyword kw">end</span>
+269:         <span class="ruby-identifier">root</span>
+270:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000212" class="method-detail">
+        <a name="M000212"></a>
+
+        <div class="method-heading">
+          <a href="#M000212" class="method-signature">
+          <span class="method-name">class_for_name</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get a class for the specified named dimension
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000212-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000212-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 104</span>
+104:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">class_for_name</span>(<span class="ruby-identifier">name</span>)
+105:         <span class="ruby-identifier">class_name</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">constantize</span>
+106:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000211" class="method-detail">
+        <a name="M000211"></a>
+
+        <div class="method-heading">
+          <a href="#M000211" class="method-signature">
+          <span class="method-name">class_name</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Convert the given name into a dimension class name
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000211-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000211-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 97</span>
+ 97:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">class_name</span>(<span class="ruby-identifier">name</span>)
+ 98:         <span class="ruby-identifier">dimension_name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+ 99:         <span class="ruby-identifier">dimension_name</span> = <span class="ruby-node">&quot;#{dimension_name}_dimension&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">dimension_name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/_dimension$/</span>
+100:         <span class="ruby-identifier">dimension_name</span>.<span class="ruby-identifier">classify</span>
+101:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000205" class="method-detail">
+        <a name="M000205"></a>
+
+        <div class="method-heading">
+          <a href="#M000205" class="method-signature">
+          <span class="method-name">define_hierarchy</span><span class="method-args">(name, levels)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define a named attribute <a href="Dimension.html#M000206">hierarchy</a> in
+the dimension.
+</p>
+<p>
+Example: <a
+href="Dimension.html#M000205">define_hierarchy</a>(:fiscal_calendar,
+[:fiscal_year, :fiscal_quarter, :fiscal_month])
+</p>
+<p>
+This would indicate that one of the drill down paths for this dimension is:
+Fiscal Year -&gt; Fiscal Quarter -&gt; Fiscal Month
+</p>
+<p>
+Internally the <a href="Dimension.html#M000207">hierarchies</a> are stored
+in order. The first <a href="Dimension.html#M000206">hierarchy</a> defined
+will be used as the default if no <a
+href="Dimension.html#M000206">hierarchy</a> is specified when rendering a
+cube.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000205-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000205-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 55</span>
+55:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_hierarchy</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">levels</span>)
+56:         <span class="ruby-identifier">hierarchies</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span>
+57:         <span class="ruby-identifier">hierarchy_levels</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">levels</span>
+58:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000215" class="method-detail">
+        <a name="M000215"></a>
+
+        <div class="method-heading">
+          <a href="#M000215" class="method-signature">
+          <span class="method-name">denominator_count</span><span class="method-args">(hierarchy_name, level, denominator_level=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a hash of all of the values at the specified <a
+href="Dimension.html#M000206">hierarchy</a> level mapped to the count at
+that level. For example, given a date dimension with years from 2002 to
+2004 and a <a href="Dimension.html#M000206">hierarchy</a> defined with:
+</p>
+<pre>
+ hierarchy :cy, [:calendar_year, :calendar_quarter, :calendar_month_name]
+</pre>
+<p>
+&#8230;then&#8230;
+</p>
+<pre>
+ DateDimension.denominator_count(:cy, :calendar_year, :calendar_quarter)
+ returns {'2002' =&gt; 4, '2003' =&gt; 4, '2004' =&gt; 4}
+</pre>
+<p>
+If the denominator_level parameter is omitted or nil then:
+</p>
+<pre>
+ DateDimension.denominator_count(:cy, :calendar_year) returns
+ {'2003' =&gt; 365, '2003' =&gt; 365, '2004' =&gt; 366}
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000215-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000215-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 138</span>
+138:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">denominator_count</span>(<span class="ruby-identifier">hierarchy_name</span>, <span class="ruby-identifier">level</span>, <span class="ruby-identifier">denominator_level</span>=<span class="ruby-keyword kw">nil</span>)
+139:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hierarchy_levels</span>[<span class="ruby-identifier">hierarchy_name</span>].<span class="ruby-identifier">nil?</span>
+140:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;The hierarchy '#{hierarchy_name}' does not exist in your dimension #{name}&quot;</span>
+141:         <span class="ruby-keyword kw">end</span>
+142:         
+143:         <span class="ruby-identifier">q</span> = <span class="ruby-keyword kw">nil</span>
+144:         <span class="ruby-comment cmt"># If the denominator_level is specified and it is not the last element</span>
+145:         <span class="ruby-comment cmt"># in the hierarchy then do a distinct count. If</span>
+146:         <span class="ruby-comment cmt"># the denominator level is less than the current level then raise an</span>
+147:         <span class="ruby-comment cmt"># ArgumentError. In other words, if the current level is</span>
+148:         <span class="ruby-comment cmt"># calendar month then passing in calendar year as the denominator level</span>
+149:         <span class="ruby-comment cmt"># would raise an ArgumentErro.</span>
+150:         <span class="ruby-comment cmt">#</span>
+151:         <span class="ruby-comment cmt"># If the denominator_level is not specified then assume the finest grain</span>
+152:         <span class="ruby-comment cmt"># possible (in the context of a date dimension this would be each day)</span>
+153:         <span class="ruby-comment cmt"># and use the id to count.</span>
+154:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">denominator_level</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hierarchy_levels</span>[<span class="ruby-identifier">hierarchy_name</span>].<span class="ruby-identifier">last</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">denominator_level</span>
+155:           <span class="ruby-identifier">level_index</span> = <span class="ruby-identifier">hierarchy_levels</span>[<span class="ruby-identifier">hierarchy_name</span>].<span class="ruby-identifier">index</span>(<span class="ruby-identifier">level</span>)
+156:           <span class="ruby-identifier">denominator_index</span> = <span class="ruby-identifier">hierarchy_levels</span>[<span class="ruby-identifier">hierarchy_name</span>].<span class="ruby-identifier">index</span>(<span class="ruby-identifier">denominator_level</span>)
+157: 
+158:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">level_index</span>.<span class="ruby-identifier">nil?</span>
+159:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;The level '#{level}' does not appear to exist&quot;</span>
+160:           <span class="ruby-keyword kw">end</span>
+161:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">denominator_index</span>.<span class="ruby-identifier">nil?</span>
+162:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;The denominator level '#{denominator_level}' does not appear to exist&quot;</span>
+163:           <span class="ruby-keyword kw">end</span>
+164:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hierarchy_levels</span>[<span class="ruby-identifier">hierarchy_name</span>].<span class="ruby-identifier">index</span>(<span class="ruby-identifier">denominator_level</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">hierarchy_levels</span>[<span class="ruby-identifier">hierarchy_name</span>].<span class="ruby-identifier">index</span>(<span class="ruby-identifier">level</span>)
+165:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;The index of the denominator level '#{denominator_level}' in the hierarchy '#{hierarchy_name}' must be greater than or equal to the level '#{level}'&quot;</span>
+166:           <span class="ruby-keyword kw">end</span>
+167: 
+168:           <span class="ruby-identifier">q</span> = <span class="ruby-node">&quot;select #{level} as level, count(distinct(#{denominator_level})) as level_count from #{table_name} group by #{level}&quot;</span>
+169:         <span class="ruby-keyword kw">else</span>
+170:           <span class="ruby-identifier">q</span> = <span class="ruby-node">&quot;select #{level} as level, count(id) as level_count from #{table_name} group by #{level}&quot;</span>
+171:         <span class="ruby-keyword kw">end</span>
+172:         <span class="ruby-identifier">denominators</span> = {}
+173:         <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">select_all</span>(<span class="ruby-identifier">q</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+174:           <span class="ruby-identifier">denominators</span>[<span class="ruby-identifier">row</span>[<span class="ruby-value str">'level'</span>]] = <span class="ruby-identifier">row</span>[<span class="ruby-value str">'level_count'</span>].<span class="ruby-identifier">to_i</span>
+175:         <span class="ruby-keyword kw">end</span>
+176:         <span class="ruby-identifier">denominators</span>
+177:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000221" class="method-detail">
+        <a name="M000221"></a>
+
+        <div class="method-heading">
+          <a href="#M000221" class="method-signature">
+          <span class="method-name">expire_value_tree_cache</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Expire the value tree cache. This should be called if the dimension
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000221-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000221-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 314</span>
+314:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expire_value_tree_cache</span>
+315:         <span class="ruby-ivar">@value_tree_cache</span> = <span class="ruby-keyword kw">nil</span>
+316:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000216" class="method-detail">
+        <a name="M000216"></a>
+
+        <div class="method-heading">
+          <a href="#M000216" class="method-signature">
+          <span class="method-name">foreign_key</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the foreign key for this dimension which is used in <a
+href="Fact.html">Fact</a> tables.
+</p>
+<p>
+Example: <a href="DateDimension.html">DateDimension</a> would have a
+foreign key of date_id
+</p>
+<p>
+The actual foreign key may be different and depends on the fact class. You
+may specify the foreign key to use for a specific fact using the
+Fact#set_dimension_options method.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000216-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000216-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 186</span>
+186:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">foreign_key</span>
+187:         <span class="ruby-identifier">table_name</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">/_dimension/</span>,<span class="ruby-value str">''</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">'_id'</span>
+188:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000207" class="method-detail">
+        <a name="M000207"></a>
+
+        <div class="method-heading">
+          <a href="#M000207" class="method-signature">
+          <span class="method-name">hierarchies</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the ordered <a href="Dimension.html#M000206">hierarchy</a> names
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000207-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000207-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 68</span>
+68:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hierarchies</span>
+69:         <span class="ruby-ivar">@hierarchies</span> <span class="ruby-operator">||=</span> []
+70:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000206" class="method-detail">
+        <a name="M000206"></a>
+
+        <div class="method-heading">
+          <a href="#M000206" class="method-signature">
+          <span class="method-name">hierarchy</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the named attribute <a href="Dimension.html#M000206">hierarchy</a>.
+Returns an array of column names.
+</p>
+<p>
+Example: <a href="Dimension.html#M000206">hierarchy</a>(:fiscal_calendar)
+might return [:fiscal_year, :fiscal_quarter, :fiscal_month]
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000206-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000206-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 63</span>
+63:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hierarchy</span>(<span class="ruby-identifier">name</span>)
+64:         <span class="ruby-identifier">hierarchy_levels</span>[<span class="ruby-identifier">name</span>]
+65:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000208" class="method-detail">
+        <a name="M000208"></a>
+
+        <div class="method-heading">
+          <a href="#M000208" class="method-signature">
+          <span class="method-name">hierarchy_levels</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the <a href="Dimension.html#M000206">hierarchy</a> levels hash
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000208-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000208-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 73</span>
+73:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hierarchy_levels</span>
+74:         <span class="ruby-ivar">@hierarchy_levels</span> <span class="ruby-operator">||=</span> {}
+75:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000213" class="method-detail">
+        <a name="M000213"></a>
+
+        <div class="method-heading">
+          <a href="#M000213" class="method-signature">
+          <span class="method-name">last_modified</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return the time when the underlying dimension source file was last
+modified. This is used to determine if a cube structure rebuild is required
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000213-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000213-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 111</span>
+111:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last_modified</span>
+112:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">__FILE__</span>).<span class="ruby-identifier">mtime</span>
+113:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000204" class="method-detail">
+        <a name="M000204"></a>
+
+        <div class="method-heading">
+          <a href="#M000204" class="method-signature">
+          <span class="method-name">level_orders</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the level orders map
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000204-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000204-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 41</span>
+41:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">level_orders</span>
+42:         <span class="ruby-ivar">@level_orders</span> <span class="ruby-operator">||=</span> {}
+43:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000203" class="method-detail">
+        <a name="M000203"></a>
+
+        <div class="method-heading">
+          <a href="#M000203" class="method-signature">
+          <span class="method-name">set_level_order</span><span class="method-args">(level, name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define a column to order by for a specific level.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000203-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000203-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 36</span>
+36:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_level_order</span>(<span class="ruby-identifier">level</span>, <span class="ruby-identifier">name</span>)
+37:         <span class="ruby-identifier">level_orders</span>[<span class="ruby-identifier">level</span>] = <span class="ruby-identifier">name</span>
+38:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000202" class="method-detail">
+        <a name="M000202"></a>
+
+        <div class="method-heading">
+          <a href="#M000202" class="method-signature">
+          <span class="method-name">set_order</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define a column to order by. If this value is specified then it will be
+used rather than the actual level being queried in the following method
+calls:
+</p>
+<ul>
+<li><a href="Dimension.html#M000217">available_values</a>
+
+</li>
+<li><a href="Dimension.html#M000218">available_child_values</a>
+
+</li>
+<li><a href="Dimension.html#M000219">available_values_tree</a>
+
+</li>
+</ul>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000202-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000202-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 31</span>
+31:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_order</span>(<span class="ruby-identifier">name</span>)
+32:         <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">name</span>
+33:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000209" class="method-detail">
+        <a name="M000209"></a>
+
+        <div class="method-heading">
+          <a href="#M000209" class="method-signature">
+          <span class="method-name">sym</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return a symbol used when referring to this dimension. The symbol is
+calculated by demodulizing and underscoring the dimension&#8216;s class
+name and then removing the trailing _dimension.
+</p>
+<p>
+Example: <a href="DateDimension.html">DateDimension</a> will return a
+symbol :date
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000209-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000209-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 82</span>
+82:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sym</span>
+83:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">demodulize</span>.<span class="ruby-identifier">underscore</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_dimension/</span>, <span class="ruby-value str">''</span>).<span class="ruby-identifier">to_sym</span>
+84:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000210" class="method-detail">
+        <a name="M000210"></a>
+
+        <div class="method-heading">
+          <a href="#M000210" class="method-signature">
+          <span class="method-name">table_name</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the table name. By default the table name will be the name of the
+dimension in singular form.
+</p>
+<p>
+Example: <a href="DateDimension.html">DateDimension</a> will have a table
+called date_dimension
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000210-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000210-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 90</span>
+90:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">table_name</span>
+91:         <span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">demodulize</span>.<span class="ruby-identifier">underscore</span>
+92:         <span class="ruby-identifier">set_table_name</span>(<span class="ruby-identifier">name</span>)
+93:         <span class="ruby-identifier">name</span>
+94:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000214" class="method-detail">
+        <a name="M000214"></a>
+
+        <div class="method-heading">
+          <a href="#M000214" class="method-signature">
+          <span class="method-name">to_dimension</span><span class="method-args">(dimension)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the dimension class for the specified dimension parameter. The
+dimension parameter may be a class, String or Symbol.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000214-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000214-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 117</span>
+117:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_dimension</span>(<span class="ruby-identifier">dimension</span>)
+118:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">dimension</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dimension</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Class</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">dimension</span>.<span class="ruby-identifier">ancestors</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-constant">Dimension</span>)
+119:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">class_for_name</span>(<span class="ruby-identifier">dimension</span>)
+120:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Class methods</h3>
+
+      <div id="method-M000220" class="method-detail">
+        <a name="M000220"></a>
+
+        <div class="method-heading">
+          <a href="#M000220" class="method-signature">
+          <span class="method-name">value_tree_cache</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the value tree cache
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000220-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000220-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 274</span>
+274:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">value_tree_cache</span>
+275:         <span class="ruby-ivar">@value_tree_cache</span> <span class="ruby-operator">||=</span> {}
+276:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000222" class="method-detail">
+        <a name="M000222"></a>
+
+        <div class="method-heading">
+          <a href="#M000222" class="method-signature">
+          <span class="method-name">expire_value_tree_cache</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Expire the value tree cache
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000222-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000222-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension.rb, line 321</span>
+321:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expire_value_tree_cache</span>
+322:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">expire_value_tree_cache</span>
+323:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

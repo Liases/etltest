@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActiveWarehouse::Builder::StringGenerator</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActiveWarehouse::Builder::StringGenerator</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/vendor/plugins/activewarehouse/lib/active_warehouse/builder/random_data_builder_rb.html">
+                vendor/plugins/activewarehouse/lib/active_warehouse/builder/random_data_builder.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+A basic String generator
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000088">generate</a>&nbsp;&nbsp;
+      <a href="#M000087">new</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000087" class="method-detail">
+        <a name="M000087"></a>
+
+        <div class="method-heading">
+          <a href="#M000087" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Initialize the <a href="StringGenerator.html">StringGenerator</a>.
+</p>
+<p>
+Options:
+</p>
+<ul>
+<li><tt>:values</tt>: List of possible values
+
+</li>
+<li><tt>:chars</tt>: List of chars to use to <a
+href="StringGenerator.html#M000088">generate</a> random values
+
+</li>
+</ul>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000087-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000087-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/builder/random_data_builder.rb, line 205</span>
+205:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span>={})
+206:         <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+207:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000088" class="method-detail">
+        <a name="M000088"></a>
+
+        <div class="method-heading">
+          <a href="#M000088" class="method-signature">
+          <span class="method-name">generate</span><span class="method-args">(column, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Generate a random string
+</p>
+<p>
+Options:
+</p>
+<ul>
+<li><tt>:values</tt>: An array of values to use. If not specified then random
+char values will be used.
+
+</li>
+<li><tt>:chars</tt>: An array of characters to use to <a
+href="StringGenerator.html#M000088">generate</a> random values (default
+[a..zA..Z])
+
+</li>
+</ul>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000088-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000088-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/builder/random_data_builder.rb, line 215</span>
+215:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">generate</span>(<span class="ruby-identifier">column</span>, <span class="ruby-identifier">options</span>={})
+216:         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:values</span>] <span class="ruby-operator">||=</span> <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:values</span>]
+217:         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:chars</span>] <span class="ruby-operator">||=</span> <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:chars</span>]
+218:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:values</span>]
+219:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:values</span>][<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:values</span>].<span class="ruby-identifier">length</span>)]
+220:         <span class="ruby-keyword kw">else</span>
+221:           <span class="ruby-identifier">s</span> = <span class="ruby-value str">''</span>
+222:           <span class="ruby-identifier">chars</span> = (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:chars</span>] <span class="ruby-operator">||</span> (<span class="ruby-value str">'a'</span><span class="ruby-operator">..</span><span class="ruby-value str">'z'</span>).<span class="ruby-identifier">to_a</span> <span class="ruby-operator">+</span> (<span class="ruby-value str">'A'</span><span class="ruby-operator">..</span><span class="ruby-value str">'Z'</span>).<span class="ruby-identifier">to_a</span>)
+223:           <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">column</span>.<span class="ruby-identifier">limit</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+224:             <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">chars</span>[<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">chars</span>.<span class="ruby-identifier">length</span>)]
+225:           <span class="ruby-keyword kw">end</span>
+226:           <span class="ruby-identifier">s</span>
+227:         <span class="ruby-keyword kw">end</span>
+228:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

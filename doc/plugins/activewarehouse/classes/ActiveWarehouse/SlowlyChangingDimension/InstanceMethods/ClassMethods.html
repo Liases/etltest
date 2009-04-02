@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: ActiveWarehouse::SlowlyChangingDimension::InstanceMethods::ClassMethods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">ActiveWarehouse::SlowlyChangingDimension::InstanceMethods::ClassMethods</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/vendor/plugins/activewarehouse/lib/active_warehouse/dimension/slowly_changing_dimension_rb.html">
+                vendor/plugins/activewarehouse/lib/active_warehouse/dimension/slowly_changing_dimension.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000076">calculate</a>&nbsp;&nbsp;
+      <a href="#M000075">count</a>&nbsp;&nbsp;
+      <a href="#M000074">count_with_older</a>&nbsp;&nbsp;
+      <a href="#M000073">find_with_older</a>&nbsp;&nbsp;
+      <a href="#M000077">with_older_scope</a>&nbsp;&nbsp;
+      <a href="#M000079">with_valid_during_scope</a>&nbsp;&nbsp;
+      <a href="#M000078">with_valid_on_scope</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000076" class="method-detail">
+        <a name="M000076"></a>
+
+        <div class="method-heading">
+          <a href="#M000076" class="method-signature">
+          <span class="method-name">calculate</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000076-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000076-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension/slowly_changing_dimension.rb, line 99</span>
+ 99:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">calculate</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+100:           <span class="ruby-identifier">with_older_scope</span> { <span class="ruby-identifier">calculate_with_older</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) }
+101:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000075" class="method-detail">
+        <a name="M000075"></a>
+
+        <div class="method-heading">
+          <a href="#M000075" class="method-signature">
+          <span class="method-name">count</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000075-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000075-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension/slowly_changing_dimension.rb, line 95</span>
+95:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+96:           <span class="ruby-identifier">with_older_scope</span> { <span class="ruby-identifier">count_with_older</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) }
+97:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000074" class="method-detail">
+        <a name="M000074"></a>
+
+        <div class="method-heading">
+          <a href="#M000074" class="method-signature">
+          <span class="method-name">count_with_older</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000074-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000074-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension/slowly_changing_dimension.rb, line 91</span>
+91:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count_with_older</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+92:           <span class="ruby-identifier">calculate_with_older</span>(<span class="ruby-identifier">:count</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">construct_count_options_from_legacy_args</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>))
+93:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000073" class="method-detail">
+        <a name="M000073"></a>
+
+        <div class="method-heading">
+          <a href="#M000073" class="method-signature">
+          <span class="method-name">find_with_older</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000073-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000073-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension/slowly_changing_dimension.rb, line 78</span>
+78:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_with_older</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+79:           <span class="ruby-identifier">options</span> = <span class="ruby-identifier">extract_options_from_args!</span>(<span class="ruby-identifier">args</span>)
+80:           <span class="ruby-identifier">validate_find_options</span>(<span class="ruby-identifier">options</span>)
+81:           <span class="ruby-identifier">set_readonly_option!</span>(<span class="ruby-identifier">options</span>)
+82:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:with_older</span>] = <span class="ruby-keyword kw">true</span> <span class="ruby-comment cmt"># yuck!</span>
+83: 
+84:           <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+85:             <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:first</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">find_initial</span>(<span class="ruby-identifier">options</span>)
+86:             <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:all</span>   <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">find_every</span>(<span class="ruby-identifier">options</span>)
+87:             <span class="ruby-keyword kw">else</span>             <span class="ruby-identifier">find_from_ids</span>(<span class="ruby-identifier">args</span>, <span class="ruby-identifier">options</span>)
+88:           <span class="ruby-keyword kw">end</span>
+89:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000077" class="method-detail">
+        <a name="M000077"></a>
+
+        <div class="method-heading">
+          <a href="#M000077" class="method-signature">
+          <span class="method-name">with_older_scope</span><span class="method-args">(&amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000077-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000077-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension/slowly_changing_dimension.rb, line 104</span>
+104:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_older_scope</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+105:             <span class="ruby-identifier">with_scope</span>({<span class="ruby-identifier">:find</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span>
+106:                   [<span class="ruby-node">&quot;#{table_name}.#{latest_version_attribute} = ?&quot;</span>, <span class="ruby-keyword kw">true</span>] } }, <span class="ruby-identifier">:merge</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+107:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000079" class="method-detail">
+        <a name="M000079"></a>
+
+        <div class="method-heading">
+          <a href="#M000079" class="method-signature">
+          <span class="method-name">with_valid_during_scope</span><span class="method-args">(valid_during, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000079-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000079-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension/slowly_changing_dimension.rb, line 115</span>
+115:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_valid_during_scope</span>(<span class="ruby-identifier">valid_during</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+116:             <span class="ruby-identifier">with_scope</span>({<span class="ruby-identifier">:find</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span>
+117:                   [<span class="ruby-node">&quot;(? between #{effective_date_attribute} and #{expiration_date_attribute})&quot;</span> <span class="ruby-operator">+</span>
+118:                   <span class="ruby-node">&quot; or (#{effective_date_attribute} between ? and ?)&quot;</span>,
+119:                   <span class="ruby-identifier">valid_during</span>.<span class="ruby-identifier">first</span>, <span class="ruby-identifier">valid_during</span>.<span class="ruby-identifier">first</span>, <span class="ruby-identifier">valid_during</span>.<span class="ruby-identifier">last</span>]} }, <span class="ruby-identifier">:merge</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+120:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000078" class="method-detail">
+        <a name="M000078"></a>
+
+        <div class="method-heading">
+          <a href="#M000078" class="method-signature">
+          <span class="method-name">with_valid_on_scope</span><span class="method-args">(valid_on, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000078-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000078-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/activewarehouse/lib/active_warehouse/dimension/slowly_changing_dimension.rb, line 109</span>
+109:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_valid_on_scope</span>(<span class="ruby-identifier">valid_on</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+110:             <span class="ruby-identifier">with_scope</span>({<span class="ruby-identifier">:find</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span>
+111:                   [<span class="ruby-node">&quot;? between #{effective_date_attribute} &quot;</span> <span class="ruby-operator">+</span>
+112:                   <span class="ruby-node">&quot;and #{expiration_date_attribute}&quot;</span>, <span class="ruby-identifier">valid_on</span>]} }, <span class="ruby-identifier">:merge</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+113:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
